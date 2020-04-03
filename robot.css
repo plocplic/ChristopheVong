@@ -1,0 +1,35 @@
+//mon fichier robot.css
+
+h1 {
+  position: relative;
+  top: 50px;
+  left: 250px;
+  font-family: Ink Free;
+  
+}
+
+h2 {
+  position: relative;
+  top: 70px;
+  font-family: Papyrus;
+}
+
+body {
+  background: linear-gradient(135deg, yellow, green);
+  height: 335px;
+  width: 270px;
+}
+
+p {
+  position: relative;
+  top: 50px;
+  left: 400px;
+  font-family: Arial;
+  
+}
+
+a {
+  position: relative;
+  top:35px;
+  left:400px;
+}
