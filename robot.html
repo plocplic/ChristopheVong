@@ -11,5 +11,14 @@
 		<h2> Bonjour ! </h2>
 		<p>Tu veux découvrir les prouesses <b>extraordinaire</b> de nos robots ? </p>
       		<a href="https://monfutursitewebderobot.com">Les robots génialoïdes</a> //Je compte rediriger vers  un autre fichier.html que j'aurai crée pour + de contenu
+		<button onclick="fonctionBonjour()">Mais il fait nuit chez moi :(</button>
+
+		<script>
+		function fonctionBonjour() {
+  		var nouveau = document.getElementById("bonjour").innerHTML; 
+  		var remplacer = nouveau.replace("Bonjour", "Bonsoir");
+  		document.getElementById("bonjour").innerHTML = remplacer;
+		}
+		</script>
 	</body>
 </html>
