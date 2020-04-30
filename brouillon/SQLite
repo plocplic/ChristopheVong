@@ -1,0 +1,18 @@
+//j'ai voulu cree 
+
+var express = require('express');
+var Sqlite = require('better-sqlite3');
+var app = express();
+var db = new Slite('db-lite.sqlite')
+
+app.get('/add_robot', (req,res) => {
+	
+	var name = req.query.name;
+	var capacity: req.query.capacity;
+	var insert = db.prepare('INSERT INTO users VALUE (?, ?)');
+	insert.run([name, capacity]);
+	res.send('done');
+	});
+});
+
+//j'ai voulu crée une table pour ajouter des capacités au robot 	
