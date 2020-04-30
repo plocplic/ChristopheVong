@@ -3,7 +3,7 @@
 h1 {
   position: relative;
   top: 50px;
-  left: 250px;
+  left: 250px;	
   font-family: Ink Free;
   
 }
@@ -12,6 +12,13 @@ h2 {
   position: relative;
   top: 70px;
   font-family: Papyrus;
+}
+
+h3 {
+  position: relative;
+  top: 150px;
+  font-family: Papyrus;
+  
 }
 
 body {
@@ -32,4 +39,158 @@ a {
   position: relative;
   top:35px;
   left:400px;
+}
+
+.robot{
+  position: relative;
+  top: 390px;
+}
+
+.oeil {
+  background-color: blue;
+  width: 30px;
+  height: 30px;
+  border-radius: 90%;
+}
+
+.jambe {
+  background-color: grey;
+  width: 10px;
+  height: 30px;
+}
+
+.bras {
+  
+  width: 10px;
+  height: 30px;
+}
+
+#tete {
+  width: 80px;
+  height: 80px;
+  background-color: grey;
+  left: 3em;
+  bottom: 10em;
+  position: absolute;
+}
+
+#oeilG {
+  position: absolute;
+  bottom: 12em;
+  left: 3.5em;
+}
+
+#oeilD {
+  position: absolute;
+  left: 5.75em;
+  bottom: 12em;
+}
+
+#jambeD {
+  position: absolute;
+  left: 6.5em;
+  bottom: 3.5em;
+}
+
+#jambeG {
+  position: absolute;
+  left: 4em;
+  bottom: 3.5em;
+}
+
+#brasG {
+  position: absolute;
+  border-top: 8px solid grey;
+  border-left: 8px solid grey;
+  left: 2.55em;
+  bottom: 7em;
+}
+
+#brasD {
+  position: absolute;
+  border-bottom: 8px solid grey;
+  border-right: 8px solid grey;
+  left: 7.45em;
+  bottom: 9em;
+}
+
+#bouche {
+ 
+ border-radius: 5px;
+  width:35px;
+  height:10px;
+  border:2px solid; 
+  border-color: red;
+  position: absolute;
+  bottom: 10.75em;
+  left: 70px;
+}
+
+#corps {
+  width: 60px;
+  height: 80px;
+  border: 2px solid #696969;
+  background-color: grey;
+  left: 56px;
+  bottom: 4.8em;
+  position: absolute;
+}
+
+.antenne {
+  width: 2px;
+  height: 25px;
+  background-color: black;
+  position: absolute;
+  bottom: 240px;
+  left: 110px;
+}
+
+#bouton{
+  position: relative;
+  top : 27em;
+  font-family : Arial Black;
+  color: blue;
+  background-color : #DEB887;
+}
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+#description_1 {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 900px;
+  top: 20px;
+  background-color: #D8F5FF;
+}
+
+#description_2 {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 60px;
+  left: 1200px;;
+  background-color: #2E8B57;
+
+}
+#description_3 {
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  top: 400px;
+  left: 850px;
+  background-color: #D8BFD8;
+}
+
+.vertical {
+  border-left: 6px solid brown;
+  height: 788px;
+  position: absolute;
+  left: 800px;
+  top: 0px;
 }
