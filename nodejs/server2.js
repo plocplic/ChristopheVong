@@ -23,6 +23,6 @@ app.use(function(req, res, next){
    res.setHeader('Content-Type', 'text/plain');
    res.status(404).send('Page not found');
 });// affiche une page d'erreur 404
-app.listen(8080); toujours dans le cas ou on utilise express
+app.listen(8080); 
 
 //server.listen(8080); 
