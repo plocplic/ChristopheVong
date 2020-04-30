@@ -1,8 +1,8 @@
 var http = require('http');
 var url = require('url');
 
-//var express = require('express');
-//var app = express(); en utilisant express mais il faut faire : npm install express
+var express = require('express');
+var app = express(); en utilisant express mais il faut faire : npm install express
 
 var server2 = http.createServer(function(req,res) {
    var page = url.parse(req.url).pathname; //on va cree un path qui lorsqu'il va être appelé va appeler la page
