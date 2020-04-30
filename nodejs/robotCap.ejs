@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		
+	</head>
+	
+	<body>
+		<h1>Ce que les robots peuvent faire</h1>
+		<ol>
+		<% todolist.forEach(function(todo, index) { %>
+			<li><a href="/robotCap/supprimer/<%= index %>"> </a> <%= robotCap %></li>
+		<% }); %>
+		</ol>
+	
+		<form action="/robotCap/ajouter/" method="post">
+			<p>
+				<label Tu penses que les robots savent faire autres choses ? Alors tape ton idée !</label>
+				<input type="text" name="newtodo" id="newtodo" autofocus />
+				<input type="submit" />
+			<p>
+		</form>
+	</body>
+</html>
+	
