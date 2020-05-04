@@ -1,0 +1,152 @@
+const express = require('express')
+const session = require('express-session')
+const bodyParser = require('body-parser')
+
+const TWO_HOURS = 1000 * 60 * 60 * 2 //2 heures 
+ 
+const {
+	PORT = 3000,
+	NODE_ENV = 'development',
+
+	SESS_NAME = 'Christophe', //changer SESS_NAME par Authentification
+	SEE_LIFETIME = TWO_HOURS //remplacer seelifetime par TpsMax
+	SESS_SECRET = 'motdepasse', //remplacer SESS par Mdp
+	} = process.env
+
+const IN_PROD = NODE_ENV === 'production'  //remplacer node et inprod par et Chargement
+const users = [ {id: 1, name: 'Christophe', password: 'motdepasse' },
+		{id: 2, name: 'Polnareffe', password: 'motdepasse' }]
+
+const app = express()
+
+app.use(bodyParser.urlencoded({
+	extended: true
+}))
+
+app.use(session({
+	name: SESS_NAME,
+	resave: false,
+	saveUninitialized: false,
+	secret: SESS_SECRET,
+	cookie: {
+	maxAge : SESS_LIFETIME,
+	sameSite: true,
+	secure: IN_PROD
+	}
+}))
+
+const redirectLogin = (req, res, next) => { //chg redirecLogin par renvoyerPseud
+	if(!req.session.userId) {
+		res.redirect('/login')
+	}	else {
+			next()
+		}	
+		
+}
+
+const redirectHome = (req, res, next) => { //chg redirecLogin par renvoyerPseud
+	if(req.session.userId) {
+		res.redirect('/home')
+	}	else {
+			next()
+		}	
+		
+}
+app.get('/', (req, res) => {
+	const { userId } = req.session	
+
+	res.send(' <h1>Session d'utilisateur</h1>
+		   ${userId ? '
+		  <a href = '/home'> Accueil </a>
+		  <form method='post' action='/logout'>
+			<button> Déconnecter </button>
+		  </form>
+		  ' : '
+		  <a href='/login'> Pseudo </a> //on pourra changer login par pseudo et en bas aussi
+	          <a href='/register'> S'enregistrer </a>
+		  }
+		)	
+})
+
+app.get('/home', redirectLogin, (req, res) => { //remplacer home par menu
+	const user = users.find(user => user.id === req.session.userId)
+
+	res.send(' <h1> Menu </h1>
+		   <a href = '/'> Main </a>
+		   <ol>
+			<li> $(user.name) </li>
+		   </ol> ')
+		
+})
+app.get('/login', redirectHome, (req, res) => { //on peut chg login par pseud?
+	res.send(' <h1> Pseudo </h1>
+		  <form method = 'post' action = '/login'>
+			<input type='name' name='name' placeHolder='Name' require />
+			<input type='password' name='password' placeHolder='Password' require />
+			<input type ='submit' />
+		  </form>
+		  <a href='/register'> S'enregistrer </a> ')
+})
+
+app.get('/register', redirectHome, (req, res) => {
+	res.send(' <h1> S'enregistrer </h1>
+		  <form method = 'post' action = '/login'>
+			<input type='name' name='name' placeHolder='Name' require />
+			<input type='password' name='password' placeHolder='Password' require />
+			<input type ='submit' />
+		  </form> 
+		  <a href='/login'> Pseudo </a> ')
+})
+
+app.post('login', redirectHome, (req, res) => {
+	const { name, password } = req.body
+	if( password) {
+		const user = user.find( user => user.pawword === password )
+	
+
+		if( user) {
+		req.session.userId = user.id
+		return res.redirect('/home')
+		}
+	}
+
+	res.redirect('/login')
+})
+
+app.post('register', redirectHome, (req, res) => {
+	const { name, password } = req.body
+
+	if(name && password) {
+		const ok = users.some(
+		  user => user.name === name
+		)
+	
+
+		if(!exists) {
+			const user = {
+				id: users.length + 1
+				name,
+				password,
+			}
+
+			users.push(user)
+			req.session.userId = user.id
+			return res.redirect('/home')
+		}
+	}
+	res.redirect('/register')
+})
+
+app.post('/logout', redirectLogin, (req, res) => {// deconnecter supprimer
+	req.session.destroy( err => {
+	if (err) {
+		return res.redirect('/home')
+	}
+
+	res.clearCookie(SESS_NAME)
+	res.redirect('/login')
+      })
+})
+app.listen(PORT, () => console.log(
+	'http://localhost:$(PORT)' //on aura qu'a taper http://localhost:3000 pour acceder au serveur
+	))
