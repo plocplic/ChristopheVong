@@ -194,3 +194,9 @@ pre {
   left: 800px;
   top: 0px;
 }
+
+#identificator {
+  position: relative;
+  top : 380px;
+  left : 110px;
+}
