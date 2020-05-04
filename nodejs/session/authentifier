@@ -8,9 +8,9 @@ const {
 	PORT = 3000,
 	NODE_ENV = 'development',
 
-	SESS_NAME = 'Christophe', //changer SESS_NAME par Authentification
-	SEE_LIFETIME = TWO_HOURS //remplacer seelifetime par TpsMax
-	SESS_SECRET = 'motdepasse', //remplacer SESS par Mdp
+	NAME = 'Christophe', 
+	TEMPS = TWO_HOURS,
+	MDP = 'motdepasse'
 	} = process.env
 
 const IN_PROD = NODE_ENV === 'production'  //remplacer node et inprod par et Chargement
@@ -24,18 +24,18 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.use(session({
-	name: SESS_NAME,
+	name: NAME,
 	resave: false,
 	saveUninitialized: false,
-	secret: SESS_SECRET,
+	secret: MDP,
 	cookie: {
-	maxAge : SESS_LIFETIME,
+	maxAge : TEMPS,
 	sameSite: true,
 	secure: IN_PROD
 	}
 }))
 
-const redirectLogin = (req, res, next) => { //chg redirecLogin par renvoyerPseud
+const redirectLogin = (req, res, next) => { 
 	if(!req.session.userId) {
 		res.redirect('/login')
 	}	else {
@@ -44,7 +44,7 @@ const redirectLogin = (req, res, next) => { //chg redirecLogin par renvoyerPseud
 		
 }
 
-const redirectHome = (req, res, next) => { //chg redirecLogin par renvoyerPseud
+const redirectHome = (req, res, next) => { 
 	if(req.session.userId) {
 		res.redirect('/home')
 	}	else {
